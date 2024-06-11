@@ -5,6 +5,7 @@
 }
 body{
     color: #222;
+    background:#C0C0C0;
 }
 html{
     font-size: 62.5%
@@ -23,7 +24,6 @@ a{
     text-decoration: none;
 }
 main{
-    /* width: 500rem; */
     width: 80vw;
     padding:1rem;
     margin: auto;
@@ -31,31 +31,110 @@ main{
 header{
     display: flex;
     justify-content: space-between;
-    margin: 2rem 0 5rem 0;
-    text-align: center;
+    align-items: center;
+    border: 1px solid #FFFAFA;
+    padding: 0 1rem;
+    height: 7rem;
+    border-radius: .5rem;
+    background: #FAF8F4;
+    margin: 0 0 2rem 0;
+
 }
 .logo{
     font-weight: bold;
+    color: #787878;
+    transition: all .3s linear;
 }
+
 header a{
     text-decoration: none;
-    color: inherit;
+    color: #787878;
     font-size: 1.7rem;
+    transition: all .3s linear;
+}
+.logo:hover, header a:hover{
+    color: #8C3608;
+    text-shadow:.1rem .0rem  #8C3608;
+    letter-spacing: .1rem;
 }
 header nav{
     display: flex;
     gap: 1.5rem;
 }
+.post-container{
+    width: 100%;
+}
 
 
 .post{
+    width: 80rem;
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 2rem;
     margin-bottom: 3rem;
-    & h2{
-        font-size: 2.2rem;
+    margin: 2rem auto;
+    border: .1rem solid #FAF8F4;
+    border-radius: .5rem;
+    padding: 1rem;
+    text-align: center;
+    & .author{
+        color: #8C3608;
+        cursor: pointer;
+        
     }
+    
+}
+.texts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.author{
+    color: #8C3608;
+    cursor: pointer;
+}
+time{
+    font-size: 1.4rem;
+    color: #787878;
+}
+.title{
+    font-size: 2rem;
+    color: #787878;
+}
+.summary{
+    font-size: 1.6rem;
+    color: #C0C0C0;
+}
+.content{
+    margin: 1.5rem 0;
+    color: #787878;
+}
+
+/* landing page image styling */
+.image, .imageContainer{
+   width: 40rem;
+   height: 35rem;
+   overflow: hidden;
+   position: relative;
+   margin: 0 auto;
+   & img{
+    border-radius: .5rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+}
+
+/* post details page image styling */
+.imageContainer{
+    max-width: 90rem;
+    max-height: 70rem;
+    width: 80rem;
+    height: 60rem;
+    /* height: ; */
 }
 
 .post .info{
@@ -65,9 +144,7 @@ header nav{
     font-weight: bold;
     display: flex;
     gap: 1rem;
-    & .author{
-        color: #222;
-    }
+  
 }
 
 .post .summary{
@@ -76,12 +153,14 @@ header nav{
 }
 
 
-
 /* form styling */
 
 .loginForm, .registerForm{
     width: 40vw;
     margin: 0 auto;
+}
+.formHeader{
+    color: #787878;
 }
 
 input{
@@ -92,6 +171,13 @@ input{
     border: 0.2rem solid #ddd;
     border-radius: .5rem;
     background-color: #fff;
+    color: #787878;
+    offset: none;
+    outline: none;
+}
+.editor{
+    border: 1px solid #FAF8F4;
+    color: #787878;
 }
 button{
     width: 100%;
@@ -104,22 +190,98 @@ button{
 
 }
 
-form h1{
+.registerForm h1, .loginForm h1{
     text-align: center;
 }
 
 
+.errorContainer{
+    /* width: 30%; */
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    & .error{
+        font-size: 8rem;
+    }
+    
+    & .linkContainer a{
+        font-size: 2rem;
+        border: 0.1rem solid #333;
+        margin: 2rem;
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        transition: all .3s linear;
+        
+
+    }
+    & .linkContainer a:hover{
+        background: #8C3608;
+        color: #fff;
+        border: transparent;
+    }
+}
 
 
+/* post creation button */
+.buttonContainer{
+    width: 100%;
+    margin-top:1rem ;
+    display: flex;
+    justify-content: end;
+    & .createButton{
+        width: 15rem;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        transition: all .3s linear;
+    }
+    & .createButton:hover{
+        background: #8C3608;
+    }
+}
 
 
+/* single post styling */
+.post a{
+    color: inherit;
+}
 
+/* postDetails page styling */
+.postDetailContainer{
+    text-align: center;
+}
 
+.linkContainer{
+    margin: 2rem 0rem;
+}
 
+.EditLink{
+    font-size: 1.5rem;
+    border: .1rem solid #999;
+    padding: 1rem 3rem;
+    background-color: #555;
+    color: #fff;
+    letter-spacing: .1rem;
+    border-radius: .5rem;
+    transition: all .3s linear;
+}
 
+.EditLink:hover{
+    background: #8C3608;
+}
 
-
-
-li{
-    list-style: none;
+@media (max-width:786px) {
+    html{
+        font-size: 50%;
+    }
+    main, header{
+        width: 60rem;
+    }
+    .post{
+        grid-template-columns: 1fr;
+        width: 60rem;
+    }
 }

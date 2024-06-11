@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
 
   const [data, setData] = useState({
+    username:"",
     email:"",
     password:""
   })
@@ -30,9 +31,13 @@ const Register = () => {
       body:JSON.stringify(data)
     })
     const responseData = await response.json();
-    console.log(responseData);
     if(response.ok){
       toast.success("Registtred successfully");
+      setData({
+        username:"",
+        email:"",
+        password:""
+      })
     }
     else{
       toast.error(responseData.message);
@@ -43,11 +48,17 @@ const Register = () => {
     <>
     <form className='registerForm' onSubmit={handleSubmit}>
     <h1>Register</h1>
+    <input type="text" name="username" id="username" required
+          placeholder='username'
+          value={data.username}
+          onChange={handleInput}
+        />
         <input type="email" name="email" id="email" required
           placeholder='Email'
           value={data.email}
           onChange={handleInput}
         />
+        
         <input type="password" name="password" id="password" required
           placeholder='Password'
           value={data.password}

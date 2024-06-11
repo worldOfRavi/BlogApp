@@ -1,29 +1,39 @@
 import React from "react";
+import {formatISO9075} from 'date-fns';
+import { Link } from "react-router-dom";
 
-const SinglePost = () => {
+const SinglePost = ({
+  _id,
+  title,
+  summary,
+  cover,
+  updatedAt,
+  author
+}) => {
+  // console.log(userInfo);
   return (
     <>
       <div className="post">
-      <div className="image">
-      <img
-          src="https://techcrunch.com/wp-content/uploads/2024/06/cybersecurity-data-sharing-2024-v2.jpg?resize=1200,675"
-          alt="security"
-        />
-      </div>
+        <div className="image">
+        <Link to={`/post/${_id}`}>
+        <div className="image">
+          <img src={`http://localhost:3000/`+cover} />
+        </div>
+        </Link>
+          
+        </div>
         <div className="texts">
-          <h2>
-            Hundreds of Snowflake customer passwords found online are linked to
-            info-stealing malware
-          </h2>
+        <Link to={`/post/${_id}`}>
+          <h2 className="title">{title}</h2>
+          </Link>
           <p className="info">
-            <a href="" className="author">Ravi's World</a>
-            <time>2024-05-06 10:37</time>
+            <a href="" className="author">
+              {author.username}
+            </a>
+            <time>{formatISO9075(new Date(updatedAt))}</time>
+            {/* <time>{updatedAt}</time> */}
           </p>
-          <p className="summary"> 
-            Cloud data analysis company Snowflake is at the center of a recent
-            spate of alleged data thefts, as its corporate customers scramble to
-            understand if their stores of cloud data have been compromised.
-          </p>
+          <p className="summary">{summary}</p>
         </div>
       </div>
     </>
